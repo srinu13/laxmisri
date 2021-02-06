@@ -1,0 +1,82 @@
+info:
+  component: Edge Server
+  spring:  
+  application:
+    name: gateway-service
+  
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+zuul:
+  ribbon:
+    eager-load: 
+      enabled: true
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000      
+  routes:   
+   userservice: 
+      path: /userservice/**
+      url: http://localhost:8082/
+      serviceId: userservice
+      stripPrefix: false
+      sensitiveHeaders:
+   offlineanalysis: 
+      path: /offlineanalysis/**
+      #url: http://localhost:8083/
+      serviceId: offlineanalysis
+      stripPrefix: false  
+      sensitiveHeaders:
+            
+userservice:
+    ReadTimeout: 60000
+    ConnectTimeout: 60000
+offlineanalysis:
+    ReadTimeout: 60000
+    ConnectTimeout: 60000
+ribbon:
+  eureka:
+    enabled: true
+    ReadTimeout: 60000
+    ConnectTimeout: 60000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8762/eureka
+    registerWithEureka: false
+      
+server:
+  port: 8768
+  hostname: localhost
+  
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+    
+feign:
+  hystrix:
+    enabled: false
+spring:
+ http:
+  multipart:
+   max-file-size: 100MB
+   max-request-size: 100MB    
+    
+    
+    
+# Increase the Hystrix timeout to 60s (globally)
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          semaphore:
+            timeoutInMilliseconds: 60000
