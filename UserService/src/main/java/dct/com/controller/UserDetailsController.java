@@ -53,7 +53,7 @@ public class UserDetailsController {
 		
 
 		System.out.println("userInfo::::::::"+userInfo.getServiceToken());
-		System.out.println("userInfo::::::::"+userInfo.getDbDetail().getEmailId());		
+		System.out.println("userInfo:::::::::::::"+userInfo.getDbDetail().getEmailId());		
 		return getUserServiceImpl().createUser(userInfo.getDbDetail());
 	}
 	
