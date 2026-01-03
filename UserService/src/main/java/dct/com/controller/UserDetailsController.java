@@ -102,7 +102,9 @@ public class UserDetailsController {
 		return getUserServiceImpl().logout(emailId);
 
 	}*/
-	
+    /*
+     * Logout Functionality
+     */
 	@RequestMapping(value ="/logout", method = RequestMethod.GET)
 	public DCTResponse logout() {
 
