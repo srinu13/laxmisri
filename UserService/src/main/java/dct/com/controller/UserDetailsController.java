@@ -103,7 +103,7 @@ public class UserDetailsController {
 
 	}*/
     /*
-     * Logout Functionality
+     * logout Functionality
      */
 	@RequestMapping(value ="/logout", method = RequestMethod.GET)
 	public DCTResponse logout() {
