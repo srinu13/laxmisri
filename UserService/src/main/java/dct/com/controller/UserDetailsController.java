@@ -1,5 +1,7 @@
 package dct.com.controller;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -111,6 +113,7 @@ public class UserDetailsController {
 		DCTResponse dctResponse=new DCTResponse();
 		dctResponse.setResult("logout success");
 		System.out.println("Inside controller  logout method");
+		
 		return dctResponse;
 
 	}
