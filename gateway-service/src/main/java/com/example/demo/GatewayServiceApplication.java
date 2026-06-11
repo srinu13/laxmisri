@@ -16,6 +16,8 @@ public class GatewayServiceApplication {
 		SpringApplication.run(GatewayServiceApplication.class, args);
 	}
 
+
+	
 	@Bean
 	public AlwaysSampler defaultSampler() {
 		return new AlwaysSampler();
